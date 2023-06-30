@@ -16,12 +16,13 @@ pipeline {
         stage('Push') {
             steps {
                 echo 'Pushing..'
+                sh 'npm run deploy'
                 sh "aws s3 sync dist/angular-demo/s3://angular-ui-sj"
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo ....'
             }
         }
     }
