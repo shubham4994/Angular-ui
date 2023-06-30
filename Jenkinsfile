@@ -20,10 +20,11 @@
             steps {
                 echo 'Pushing..'
                 sh 'npm run deploy'
-                sh 'aws s3 sync dist/angular-demo/s3://angular-ui-sj'
+                sh 'aws s3 sync dist/angular-demo/ s3://angular-ui-sj'
             }
         }
     
+
         }
 }
     
