@@ -16,6 +16,21 @@
                 sh 'npm run build'
             }
         }
+        stage('Unit Tests') {
+            steps {
+                echo 'Running unit tests..'
+                sh 'npm run test'  // Run Karma tests
+            }
+        }
+        
+        stage('SonarQube analysis') {
+            agent any
+            steps {
+              withSonarQubeEnv('Sonar-test') {
+                sh 'sonar-scanner'
+              }
+            }
+          }
         stage('Push') {
             steps {
                 echo 'Pushing..'
