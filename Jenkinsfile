@@ -12,15 +12,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh "npm ci --production"
-                sh "npm run build"
+                sh 'npm install --save-dev @angular-devkit/build-angular'
+                sh 'npm run build'
             }
         }
         stage('Push') {
             steps {
                 echo 'Pushing..'
                 sh 'npm run deploy'
-                sh "aws s3 sync dist/angular-demo/s3://angular-ui-sj"
+                sh 'aws s3 sync dist/angular-demo/s3://angular-ui-sj'
             }
         }
     
